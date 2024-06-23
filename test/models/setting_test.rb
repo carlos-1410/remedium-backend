@@ -38,4 +38,15 @@ class SettingTest < ActiveSupport::TestCase
 
     assert_equal setting.errors.full_messages.to_sentence, expected_error
   end
+
+  test "validate image_format" do
+    filename = "empty_file.txt"
+    file = File.open(Rails.root.join("test/factories/attachments/#{filename}").to_s)
+    image = ActiveStorage::Blob.create_and_upload!(io: file, filename: filename)
+
+    setting = build(:setting, logo: image, favicon: image)
+    assert setting.invalid?
+    assert setting.errors.added?(:logo, "needs to be an image")
+    assert setting.errors.added?(:favicon, "needs to be an image")
+  end
 end

@@ -14,7 +14,7 @@ module Operations
     attr_reader :params, :resource
 
     def update_resource
-      response = resource.save_with_response(**params)
+      response = resource.update_attributes_with_response(**params)
 
       return Response.success(resource) if response.success?
 

@@ -6,7 +6,8 @@ class Setting < ApplicationRecord
 
   validates :contact_email, :meta_tags, :meta_title, :meta_description, presence: true
   validates :contact_email, format: { with: Devise.email_regexp }, allow_nil: false
-  validate :single_setting
+  validate :single_setting, on: :create
+  validates_with ImageFormatValidator, image_fields: %i(favicon logo)
 
   private
 
