@@ -17,7 +17,7 @@ module Api
       end
 
       def create
-        action = Posts::Create::Action.new(params: post_params).call
+        action = Posts::Create.new(Post.new(post_params)).call
 
         if action.success?
           render json: action.value,
@@ -30,7 +30,7 @@ module Api
       end
 
       def update
-        action = Posts::Update::Action.new(post, params: post_params).call
+        action = Posts::Update.new(post, params: post_params).call
 
         if action.success?
           render json: action.value,
@@ -42,7 +42,7 @@ module Api
       end
 
       def destroy
-        action = Posts::Destroy::Action.new(post).call
+        action = Posts::Destroy.new(post).call
 
         if action.success?
           render status: :no_content
