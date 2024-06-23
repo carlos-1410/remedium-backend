@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "meta_tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "slug": {
+      "type": "string"
+    },
+    "archived": {
+      "type": "boolean"
+    },
+    "included_in_sitemap": {
+      "type": "boolean"
+    },
+    "hidden": {
+      "type": "boolean"
+    },
+    "visible_from": {
+      "type": [
+        "datetime",
+        "null"
+      ]
+    },
+    "visible_to": {
+      "type": [
+        "datetime",
+        "null"
+      ]
+    },
+    "created_at": {
+      "type": "datetime"
+    },
+    "updated_at": {
+      "type": "datetime"
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "body",
+    "tags",
+    "meta_tags",
+    "slug",
+    "archived",
+    "included_in_sitemap",
+    "hidden",
+    "visible_from",
+    "visible_to",
+    "created_at",
+    "updated_at"
+  ]
+}
