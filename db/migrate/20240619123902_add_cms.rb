@@ -17,7 +17,7 @@ class AddCms < ActiveRecord::Migration[7.0]
       t.string :instagram_url
       t.string :youtube_url
       t.string :meta_title, null: false
-      t.string :meta_tags, null: false
+      t.string :meta_tags, null: false, array: true
       t.text :meta_description, null: false
     end
 
@@ -50,8 +50,8 @@ class AddCms < ActiveRecord::Migration[7.0]
     end
 
     create_table :posts do |t|
-      t.string :title
-      t.text :body
+      t.string :title, null: false
+      t.text :body, null: false
       t.string :tags, array: true
       t.string :meta_tags, array: true, default: []
       t.string :slug

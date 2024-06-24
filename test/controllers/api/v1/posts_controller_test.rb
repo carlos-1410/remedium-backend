@@ -111,7 +111,7 @@ module Api
         title = "new title"
         params = new_post.attributes.merge(title:)
 
-        put api_v1_post_url(id: new_post.id), params:, as: :json
+        put api_v1_post_url(id: new_post.id), params: params, as: :json
 
         assert_json_schema_match "api/v1/posts/post", response.json
         assert_response :ok
@@ -123,7 +123,7 @@ module Api
         params = new_post.attributes.merge(title: nil)
         expected_response = { error: "Title can't be blank" }
 
-        put api_v1_post_url(id: new_post.id), params:, as: :json
+        put api_v1_post_url(id: new_post.id), params: params, as: :json
 
         assert_equal response.json, expected_response
       end
